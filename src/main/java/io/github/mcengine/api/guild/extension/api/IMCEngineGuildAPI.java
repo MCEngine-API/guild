@@ -3,20 +3,29 @@ package io.github.mcengine.api.guild.extension.api;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Represents a guild-related DLC module that can be dynamically loaded into the MCEngine.
+ * Represents a Guild-based API module that can be dynamically loaded into the MCEngine.
  * <p>
- * Implement this interface to create a plugin extension that hooks into the guild system
- * provided by the MCEngine. The implementation should register its functionality within the {@link #onLoad(Plugin)} method.
+ * Implement this interface to provide guild-related APIs to the system.
  */
 public interface IMCEngineGuildAPI {
-
     /**
-     * Called when the DLC module is loaded by the engine.
-     * <p>
-     * This method should be used to initialize any resources, register listeners,
-     * or perform setup logic necessary for the plugin extension to function correctly.
+     * Called when the Guild API is loaded by the engine.
      *
-     * @param plugin The {@link Plugin} instance that is providing the context for this DLC module.
+     * @param plugin The plugin instance providing context.
      */
     void onLoad(Plugin plugin);
+
+    /**
+     * Called when the Guild API is unloaded or disabled by the engine.
+     *
+     * @param plugin The plugin instance providing context.
+     */
+    void onDisload(Plugin plugin);
+
+    /**
+     * Sets a unique ID for this Guild API instance.
+     *
+     * @param id The unique ID assigned by the engine.
+     */
+    void setId(String id);
 }
